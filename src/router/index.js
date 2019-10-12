@@ -25,6 +25,11 @@ let router = new Router({
             name: 'Register',
             component: () => import("../pages/Register")
         },
+        {// 订单列表
+            path: '/orders',
+            name: 'Orders',
+            component: () => import("../pages/Orders")
+        },
     ]
 });
 
