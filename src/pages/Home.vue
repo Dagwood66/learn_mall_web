@@ -1,11 +1,17 @@
 <template>
     <div class="home">
-
+        <div>
+            <div v-for="item in dataList" :key="item.id">
+                <span>{{item.name}}</span>
+                <span>￥{{item.price}}</span>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
     import {mapState} from "vuex"
+    import axios from "axios"
 
     export default {
         data() {
@@ -19,11 +25,13 @@
             })
         },
         mounted() {
-
+            axios.get("/api/list").then(res => {
+                if (res.data.status === "1") {
+                    this.dataList = res.data.data;
+                }
+            })
         },
-        methods: {
-
-        }
+        methods: {}
     }
 </script>
 

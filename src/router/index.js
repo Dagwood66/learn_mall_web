@@ -15,6 +15,16 @@ let router = new Router({
             name: 'My',
             component: () => import("../pages/My")
         },
+        {// 登陆
+            path: '/login',
+            name: 'Login',
+            component: () => import("../pages/Login")
+        },
+        {// 注册
+            path: '/register',
+            name: 'Register',
+            component: () => import("../pages/Register")
+        },
     ]
 });
 

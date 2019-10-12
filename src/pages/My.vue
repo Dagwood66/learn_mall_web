@@ -1,6 +1,7 @@
 <template>
-    <div class="home">
-
+    <div class="my">
+        <h1>我的</h1>
+        <mt-button type="default" size="large" @click="goLogin">登陆</mt-button>
     </div>
 </template>
 
@@ -22,22 +23,13 @@
 
         },
         methods: {
-
+            goLogin() {
+                this.$router.push("/login")
+            }
         }
     }
 </script>
 
 <style scoped lang="less">
-    .home {
-        margin: 10px auto;
-        width: 90vw;
 
-        a.item {
-            display: block;
-            margin-bottom: 10px;
-            border-radius: 10px;
-
-            overflow: hidden;
-        }
-    }
 </style>
