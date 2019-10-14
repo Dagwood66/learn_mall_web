@@ -1,8 +1,11 @@
 <template>
     <div>
+        <h1>我的订单</h1>
         <div>
             <div v-for="item in dataList" :key="item.id">
-                {{item}}
+                <p v-for="(value,name) in item" :key="name">
+                    <span>{{item.id}}---</span><span>{{name}}&nbsp;:&nbsp;</span><span>{{value}}</span>
+                </p>
             </div>
         </div>
     </div>
@@ -27,6 +30,10 @@
             axios.get("/api/orders").then(res => {
                 if (res.data.status === "1") {
                     this.dataList = res.data.data;
+                } else {
+                    this.$toast({
+                        message: res.data.msg
+                    });
                 }
             })
         },

@@ -32,7 +32,7 @@
                     pwd: this.pwd,
                 }).then(res => {
                     if (res.data.status === "1") {
-                        this.$router.push("/");
+                        this.$router.push(this.$route.query.backUrl || "/");
                     } else {
                         this.$toast({message: res.data.msg});
                     }

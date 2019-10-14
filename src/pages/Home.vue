@@ -1,9 +1,10 @@
 <template>
-    <div class="home">
+    <div>
         <div>
             <div v-for="item in dataList" :key="item.id">
                 <span>{{item.name}}</span>
                 <span>￥{{item.price}}</span>
+                <button type="button" @click="buy(item)">购买</button>
             </div>
         </div>
     </div>
@@ -31,21 +32,35 @@
                 }
             })
         },
-        methods: {}
+        methods: {
+            buy(item) {
+                axios.get("/api/login").then(res => {
+                    if (res.data.status === "1") {
+                        axios.post("/api/orders", {
+                            gid: item.id,
+                        }).then(res => {
+                            if (res.data.status === "1") {
+                                this.$router.push("/orders");
+                            } else {
+                                this.$toast({
+                                    message: res.data.msg
+                                });
+                            }
+                        })
+                    } else {
+                        this.$router.push({
+                            path: "/login",
+                            query: {
+                                backUrl: this.$route.path
+                            }
+                        });
+                    }
+                });
+            }
+        }
     }
 </script>
 
 <style scoped lang="less">
-    .home {
-        margin: 10px auto;
-        width: 90vw;
 
-        a.item {
-            display: block;
-            margin-bottom: 10px;
-            border-radius: 10px;
-
-            overflow: hidden;
-        }
-    }
 </style>
