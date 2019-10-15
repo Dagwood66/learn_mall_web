@@ -3,8 +3,10 @@
         <h1>登陆</h1>
         <mt-field label="手机号" placeholder="手机号" v-model="phone"></mt-field>
         <mt-field label="密码" placeholder="密码" type="password" v-model="pwd"></mt-field>
-        <mt-button type="default" size="large" @click="login">登陆</mt-button>
-        <mt-button type="default" size="large" @click="goRegister">注册</mt-button>
+        <div style="margin: 4vw;">
+            <mt-button style="margin-bottom: 2vw;" type="primary" size="large" @click="login">登陆</mt-button>
+            <mt-button type="default" size="large" @click="goRegister">注册</mt-button>
+        </div>
     </div>
 </template>
 
@@ -32,7 +34,7 @@
                     pwd: this.pwd,
                 }).then(res => {
                     if (res.data.status === "1") {
-                        this.$router.push(this.$route.query.backUrl || "/");
+                        this.$router.push(this.$route.query.backUrl || "/my");
                     } else {
                         this.$toast({message: res.data.msg});
                     }

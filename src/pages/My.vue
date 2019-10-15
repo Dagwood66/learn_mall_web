@@ -1,16 +1,20 @@
 <template>
     <div class="my">
         <template v-if="isLogin">
-            <div style="text-align: center;">
-                <el-avatar :size="60" :src="dataInfo.avatar_url"></el-avatar>
-                <p>{{dataInfo.phone}}</p>
+            <div style="text-align: center;margin: 5vw 0;" @click="goMyUpdate">
+                <el-avatar shape="circle" :size="80" :src="dataInfo.avatar_url"></el-avatar>
+                <p>{{dataInfo.nickname}}</p>
+                <p style="color: #999999;">{{dataInfo.phone}}</p>
             </div>
-            <mt-button type="default" size="large" @click="loginOut">退出账户</mt-button>
         </template>
         <template v-else>
-            <mt-button type="default" size="large" @click="goLogin">登陆</mt-button>
+            <div style="text-align: center;margin: 5vw 0;" @click="goLogin">
+                <el-avatar shape="circle" :size="80"></el-avatar>
+                <p>未登录</p>
+            </div>
         </template>
-        <mt-button type="default" size="large" @click="goOrders">我的订单</mt-button>
+        <mt-cell title="我的订单" is-link :to="{path:'/orders'}"></mt-cell>
+        <mt-cell v-if="isLogin" title="退出账户" is-link @click.native="loginOut"></mt-cell>
     </div>
 </template>
 
@@ -49,8 +53,8 @@
             goLogin() {
                 this.$router.push("/login")
             },
-            goOrders() {
-                this.$router.push("/orders")
+            goMyUpdate() {
+                this.$router.push("/myUpdate")
             },
             loginOut() {
                 axios.get("/api/login", {
@@ -58,7 +62,7 @@
                         type: "loginOut",
                     }
                 }).then(res => {
-                    console.log(res);
+                    window.location.reload();
                 })
             }
         }

@@ -15,6 +15,11 @@ let router = new Router({
             name: 'My',
             component: () => import("../pages/My")
         },
+        {// 用户信息更改界面
+            path: '/myUpdate',
+            name: 'MyUpdate',
+            component: () => import("../pages/MyUpdate")
+        },
         {// 登陆
             path: '/login',
             name: 'Login',

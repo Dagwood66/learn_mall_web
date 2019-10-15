@@ -4,8 +4,10 @@
         <mt-field label="手机号" placeholder="手机号" v-model="phone"></mt-field>
         <mt-field label="密码" placeholder="密码" type="password" v-model="pwd"></mt-field>
         <mt-field label="确认密码" placeholder="确认密码" type="password" v-model="okPwd"></mt-field>
-        <mt-button type="default" size="large" @click="register">注册</mt-button>
-        <mt-button type="default" size="large" @click="goLogin">登陆</mt-button>
+        <div style="margin: 4vw;">
+            <mt-button style="margin-bottom: 2vw;" type="primary" size="large" @click="register">注册</mt-button>
+            <mt-button type="default" size="large" @click="goLogin">登陆</mt-button>
+        </div>
     </div>
 </template>
 
@@ -29,6 +31,12 @@
         },
         methods: {
             register() {
+                if (this.pwd !== this.okPwd) {
+                    this.$toast({
+                        message: "密码不一致"
+                    });
+                    return;
+                }
                 axios.post("/api/register", {
                     phone: this.phone,
                     pwd: this.pwd,
