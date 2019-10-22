@@ -20,6 +20,7 @@
 
 <script>
     import {mapState} from "vuex"
+    import {isLogin,loginOut} from "../utils/HttpUtils"
     import axios from "axios"
 
     export default {
@@ -35,7 +36,7 @@
             })
         },
         mounted() {
-            axios.get("/api/login").then(res => {
+            isLogin().then(res => {
                 this.isLogin = res.data.status === "1";
                 if (this.isLogin) {
                     this.getDataInfo();
@@ -57,11 +58,7 @@
                 this.$router.push("/myUpdate")
             },
             loginOut() {
-                axios.get("/api/login", {
-                    params: {
-                        type: "loginOut",
-                    }
-                }).then(res => {
+                loginOut().then(res => {
                     window.location.reload();
                 })
             }
