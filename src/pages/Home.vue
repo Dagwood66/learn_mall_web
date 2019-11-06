@@ -26,9 +26,14 @@
             })
         },
         mounted() {
-            axios.get("/api/list").then(res => {
+            axios.get("/api/goodsList", {
+                params: {
+                    page: 0,
+                    pageSize: 10,
+                }
+            }).then(res => {
                 if (res.data.status === "1") {
-                    this.dataList = res.data.data;
+                    this.dataList = res.data.data.list;
                 }
             })
         },
