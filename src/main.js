@@ -6,19 +6,16 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import axios from 'axios'
 import store from "./store"
 import "./css/style.less"
 import router from './router'
 
 Vue.config.productionTip = false;
 
-Vue.prototype.$http = axios;
-
 Vue.use(MintUI);
 Vue.use(ElementUI);
 
-new Vue({
+window.vm = new Vue({
     el: '#app',
     router,
     store,
