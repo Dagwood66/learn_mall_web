@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" class="list">
-            <div class="item" v-for="item in dataList" :key="item.id" @click="buy(item)">
+            <div class="item" v-for="item in dataList" :key="item.id" @click="goProductDetails(item)">
                 <img :src="item.logo_url" alt="">
             </div>
         </div>
@@ -47,18 +47,13 @@
                     this.loading = false;
                 })
             },
-            buy(item) {
-                axios.post("/api/ordersAdd", {
-                    gid: item.id,
-                }).then(res => {
-                    if (res.data.status === "1") {
-                        this.$router.push("/orders");
-                    } else {
-                        this.$toast({
-                            message: res.data.msg
-                        });
+            goProductDetails(item) {
+                this.$router.push({
+                    path: "/productDetails",
+                    query: {
+                        id: item.id,
                     }
-                })
+                });
             }
         }
     }

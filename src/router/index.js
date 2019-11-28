@@ -35,6 +35,11 @@ let router = new Router({
             name: 'Orders',
             component: () => import("../pages/Orders")
         },
+        {// 商品详情
+            path: '/productDetails',
+            name: 'ProductDetails',
+            component: () => import("../pages/ProductDetails")
+        },
     ]
 });
 

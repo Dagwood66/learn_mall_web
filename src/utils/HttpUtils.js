@@ -27,3 +27,7 @@ export function loginOut() {
 export function getOrderUser() {
     return axios.get("/api/orders/user");
 }
+
+export function postOrders(data = {}) {
+    return axios.post("/api/ordersAdd", data);
+}
