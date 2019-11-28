@@ -48,28 +48,17 @@
                 })
             },
             buy(item) {
-                axios.get("/api/login").then(res => {
+                axios.post("/api/ordersAdd", {
+                    gid: item.id,
+                }).then(res => {
                     if (res.data.status === "1") {
-                        axios.post("/api/orders", {
-                            gid: item.id,
-                        }).then(res => {
-                            if (res.data.status === "1") {
-                                this.$router.push("/orders");
-                            } else {
-                                this.$toast({
-                                    message: res.data.msg
-                                });
-                            }
-                        })
+                        this.$router.push("/orders");
                     } else {
-                        this.$router.push({
-                            path: "/login",
-                            query: {
-                                backUrl: this.$route.path
-                            }
+                        this.$toast({
+                            message: res.data.msg
                         });
                     }
-                });
+                })
             }
         }
     }
