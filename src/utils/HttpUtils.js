@@ -23,3 +23,7 @@ export function isLogin() {
 export function loginOut() {
     return axios.get("/api/loginOut")
 }
+
+export function getOrderUser() {
+    return axios.get("/api/orders/user");
+}

@@ -13,7 +13,7 @@
 
 <script>
     import {mapState} from "vuex"
-    import axios from "axios"
+    import {getOrderUser} from "../utils/HttpUtils";
 
     export default {
         data() {
@@ -27,7 +27,7 @@
             })
         },
         mounted() {
-            axios.get("/api/orders").then(res => {
+            getOrderUser().then(res => {
                 if (res.data.status === "1") {
                     this.dataList = res.data.data;
                 } else {
