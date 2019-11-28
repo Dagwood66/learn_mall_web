@@ -2,11 +2,18 @@
     <div>
         <h1>我的订单</h1>
         <div>
-            <div v-for="item in dataList" :key="item.id">
-                <p v-for="(value,name) in item" :key="name">
-                    <span>{{item.id}}---</span><span>{{name}}&nbsp;:&nbsp;</span><span>{{value}}</span>
-                </p>
-            </div>
+            <el-card style="margin: 2vw;" v-for="item in dataList" :key="item.id">
+                <div class="text-ellipsis" slot="header">
+                    {{item.name}}
+                </div>
+                <div>
+                    <div v-for="(value,key) in item">
+                        <div>
+                            {{key}}:{{value}}
+                        </div>
+                    </div>
+                </div>
+            </el-card>
         </div>
     </div>
 </template>
