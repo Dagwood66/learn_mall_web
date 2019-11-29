@@ -40,6 +40,11 @@ let router = new Router({
             name: 'ProductDetails',
             component: () => import("../pages/ProductDetails")
         },
+        {// 购物车
+            path: '/shopCart',
+            name: 'ShopCart',
+            component: () => import("../pages/ShopCart")
+        },
     ]
 });
 

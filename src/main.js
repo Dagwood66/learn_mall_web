@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App'
 import "normalize.css"
-import "./css/ecard-font.less"
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import ElementUI from 'element-ui';

@@ -2,11 +2,15 @@
     <div class="tabbar_fill">
         <mt-tabbar v-model="selected">
             <mt-tab-item id="/" @click.native="go('/')">
-                <span class="ecard-font" slot="icon">&#xe600;</span>
+                <span class="iconfont iconfont-home" slot="icon"></span>
                 首页
             </mt-tab-item>
+            <mt-tab-item id="/shopCart" @click.native="go('/shopCart')">
+                <span class="iconfont iconfont-gouwuche" slot="icon"></span>
+                购物车
+            </mt-tab-item>
             <mt-tab-item id="/my" @click.native="go('/my')">
-                <span class="ecard-font" slot="icon">&#xe601;</span>
+                <span class="iconfont iconfont-my" slot="icon"></span>
                 我的
             </mt-tab-item>
         </mt-tabbar>
